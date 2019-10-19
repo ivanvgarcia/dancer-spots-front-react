@@ -1,0 +1,168 @@
+.lesson-show {
+  margin-top: 2em;
+  &__images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      box-shadow: 0 5px 6px rgb(43, 42, 42);
+    }
+  }
+  &__information {
+    position: relative;
+    .box {
+      position: relative;
+      margin-top: 5em;
+      padding-top: 6.5em;
+      margin-bottom: 2em;
+    }
+    .title {
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .title span {
+      background: $vibrant-gradient;
+      color: #fff;
+      padding: 0.3em;
+      margin-right: 0.4em;
+      font-size: 1.5rem;
+    }
+  }
+  &__price {
+    font-size: 1rem;
+    @include tag;
+  }
+  &__teacher {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 20px;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 0 5px 6px rgb(43, 42, 42);
+    z-index: 10;
+  }
+  &__metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 0;
+    & .highlight {
+      margin: 0;
+    }
+    & > *:not(:last-child) {
+      margin-right: 3em;
+    }
+  }
+  &__date {
+    font-size: 1.6rem;
+  }
+
+  & .tag {
+    font-size: 0.8rem;
+  }
+
+  &__description {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.6rem;
+  }
+}
+
+.highlight {
+  @include highlight(top, $vibrant, $light);
+}
+
+.layer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  @include filter;
+}
+
+@media only screen and (max-width: 1220px) {
+  .lesson-show {
+    .container {
+      max-width: 1100px;
+      margin: 2em 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .lesson-show {
+    & .section {
+      padding-top: 0;
+    }
+    &__title.is-1 {
+      font-size: 2rem;
+      width: 100%;
+      margin: 0;
+      padding: 1em 0;
+      text-align: center;
+    }
+    &__teacher-name {
+      display: flex;
+      flex-direction: column;
+    }
+    &__metadata {
+      flex-direction: column;
+      & .highlight {
+        margin: 0;
+      }
+    }
+    & .tags {
+      margin-top: 1em;
+    }
+
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .lesson-show {
+    & .section {
+      padding: 0;
+    }
+    & .container {
+      max-width: 1100px;
+      margin: 2em 0;
+    }
+    &__information {
+      margin: 0 .5em;
+    }
+    & .box {
+      padding-top: 5em;
+    }
+    &__images {
+      padding: 0;
+    }
+    &__title.is-1 {
+      font-size: 2rem;
+      width: 100%;
+      margin: 0;
+      padding: 1em 0;
+      text-align: center;
+    }
+    &__teacher {
+      width: 100px;
+      height: 100px;
+      top: 30px;
+    }
+    &__date {
+      font-size: 1.4em;
+    }
+    &__price {
+      font-size: .8rem;
+      padding: .3em 1.5em .3em .5em;
+    }
+  }
+}
+
+
+

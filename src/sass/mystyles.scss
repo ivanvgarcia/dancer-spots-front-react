@@ -1,0 +1,473 @@
+@charset "utf-8";
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// Brand Colors
+$primary: #6906b2;
+$primary-dark: #4e0086;
+$primary-light: #944eca;
+$secondary: #ffc200;
+$tertiary: #21cc67;
+$dark: #363636;
+$vibrant: #ff3c63;
+// Color Variables
+$info: $secondary;
+$success: $tertiary;
+$footer-background-color: $primary-dark;
+$navbar-item-hover-color: $primary-dark;
+$input-focus-border-color: $primary;
+$vibrant-gradient: linear-gradient(134deg, $vibrant, $primary-light);
+$label-weight: 300;
+
+$default-font-size: 1rem;
+
+// Import only what you need from Bulma
+@import '../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../node_modules/bulma/sass/base/_all.sass';
+@import '../../node_modules/bulma/sass/elements/button.sass';
+@import '../../node_modules/bulma/sass/elements/tag.sass';
+@import '../../node_modules/bulma/sass/elements/container.sass';
+@import '../../node_modules/bulma/sass/form/_all.sass';
+@import '../../node_modules/bulma/sass/elements/title.sass';
+@import '../../node_modules/bulma/sass/elements/other.sass';
+@import '../../node_modules/bulma/sass/elements/box.sass';
+@import '../../node_modules/bulma/sass/elements/image.sass';
+@import '../../node_modules/bulma/sass/components/navbar.sass';
+@import '../../node_modules/bulma/sass/components/card.sass';
+@import '../../node_modules/bulma/sass/components/media.sass';
+@import '../../node_modules/bulma/sass/components/message.sass';
+@import '../../node_modules/bulma/sass/components/level.sass';
+@import '../../node_modules/bulma/sass/layout/_all.sass';
+@import '../../node_modules/bulma/sass/grid/columns.sass';
+
+@import 'components/mixins';
+@import 'components/backdrop.scss';
+@import 'components/_side-menu.scss';
+@import 'components/_event-card-info.scss';
+@import 'components/_venue-card.scss';
+@import 'components/filtered-venues';
+@import 'components/lesson-card';
+@import 'components/lesson-show';
+@import 'components/flash-alert';
+@import 'components/pagination';
+
+html,
+body {
+  height: 100%;
+  background: #f8f8f8;
+}
+
+i {
+  margin-right: 5px;
+}
+
+a:not(.button) {
+  color: $primary;
+}
+
+a:not(.button):hover {
+  opacity: 0.95;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App .main {
+  flex: 1 0 auto;
+}
+
+.form-box {
+  margin: 4rem 1rem;
+}
+
+.navbar {
+  box-shadow: 0 1px 8px #797979;
+  border-bottom: 3px solid $vibrant;
+}
+
+.login-form {
+  position: relative;
+  padding-top: 3em;
+}
+
+.logo {
+  opacity: 0;
+  transform: translateX(-50%);
+  animation: appear 0.4s linear forwards;
+}
+
+.login-image {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -50px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  animation: spin 0.4s forwards;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > * {
+    margin: 0.4em;
+  }
+}
+
+.loader {
+  margin: 60px auto;
+  border: 16px solid #bdc3c7;
+  width: 60px;
+  height: 60px;
+  border-top-color: $primary;
+  border-bottom-color: $tertiary;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.has-background-primary-light {
+  background: $primary-light;
+}
+
+.has-small-padding {
+  padding: 10px;
+}
+
+.has-small-padding-btm {
+  padding-bottom: 10px;
+}
+
+.content-is-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nomargin-icon {
+  margin: 0;
+}
+
+.small-margin-top {
+  margin-top: 0.5rem;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.margin-top-btm {
+  margin: 1rem 0;
+}
+
+.margin-top-btm-lg {
+  margin: 3rem 0;
+}
+
+.small-margin-top-btm {
+  margin: 0.5rem 0;
+}
+
+.padding-top-btm {
+  padding: 1rem 0;
+}
+
+.landing-hero {
+  background-image: linear-gradient(
+      110deg,
+      rgba($primary, 0.9),
+      rgba($tertiary, 0.8)
+    ),
+    url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.venue-hero {
+  background-image: linear-gradient(
+      rgba($primary, 0.7),
+      rgba(rgb(223, 227, 251), 0.6)
+    ),
+    url('http://studio-pepe.com/wp/wp-content/uploads/2016/03/studio-pepe2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.venue-item-button {
+  padding: 0.4rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.show-venue-info {
+  padding: 2rem 0;
+}
+
+.venue-rating {
+  margin: 20px 0;
+}
+
+.venue-rating span {
+  background: $info;
+  border: 2px solid $primary;
+  padding: 5px;
+  border-radius: 5px;
+  color: #242323;
+}
+
+.half-highlight {
+  background-image: linear-gradient(
+    to top,
+    rgba($primary-light, 0.7),
+    rgba($primary-light, 0.7) 50%
+  );
+  background-size: 20% 40%;
+  background-repeat: repeat-x;
+  background-position: 0% 100%;
+}
+
+.event-card {
+  position: relative;
+  overflow: hidden;
+  max-height: 200px;
+
+  &:hover .event-card__icons {
+    transform: translateY(0px);
+  }
+
+  & h4,
+  p {
+    color: #fff;
+  }
+
+  &__icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 11;
+    transform: translateY(-30px);
+    transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  &__icon {
+    font-size: 1.4rem;
+    background: none;
+    border: none;
+
+    & i {
+      color: $secondary;
+    }
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    padding: 0 2rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#242323, 0.6);
+
+    & a {
+      z-index: 11;
+      color: $secondary;
+
+      &:hover {
+        color: $secondary;
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+.sticky {
+  position: sticky !important;
+  top: 0;
+}
+
+.user-card {
+  position: relative;
+
+  &__layer {
+    @include filter;
+  }
+
+  &__instructor {
+    @include tag;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .user-card {
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .user-card:hover {
+    z-index: 100;
+    transform: scale(1.1) rotate(4deg);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .flex {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .event-card-info {
+    flex-direction: column;
+
+    &__media {
+      max-height: none;
+    }
+  }
+
+  .event-card {
+    max-height: 150px;
+
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+.ql-container {
+  background: #fff;
+  min-height: 10em;
+}
+
+.ql-editor {
+  height: 100%;
+}
+
+input.rc-time-picker-input {
+  height: 2em;
+  font-size: 1rem;
+}
+
+.icon.is-left i {
+  font-size: 1.6rem;
+  color: rgba($primary, 0.2);
+  padding: 5px 0 0 5px;
+}
+
+#modal {
+  position: relative;
+  z-index: 999;
+}
+
+#modal .modal-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  min-width: 700px;
+  height: auto;
+  z-index: 1000;
+  background: white;
+  padding: 2em;
+  box-shadow: $box-shadow;
+  & img {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+  }
+  &__title,
+  & .subtitle {
+    text-align: center;
+  }
+  &__description {
+    font-size: 1.2rem;
+  }
+  &__actions {
+    padding: 1em 0;
+    align-self: center;
+    & > *:not(:last-of-type) {
+      margin-right: 1em;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal {
+    min-width: 100%;
+    padding: 1em;
+    height: auto;
+    & .title.is-2 {
+      font-size: 1.8rem;
+    }
+  }
+  .is-grouped {
+    flex-wrap: wrap;
+  }
+
+  .control {
+    width: 100%;
+  }
+
+  .field.is-marginless label {
+    width: 100%;
+  }
+
+  .field.is-marginless label {
+    margin: 1em 0 0 0;
+  }
+}

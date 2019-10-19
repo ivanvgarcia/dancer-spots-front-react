@@ -1,0 +1,98 @@
+.venue-card {
+    position: relative;
+    background: rgb(238, 238, 238);
+    overflow: hidden;
+
+    &:hover .venue-card__link {
+        transform: scale(1.1);
+    }
+
+    &:hover .venue-card__title {
+        transform: translateX(0px);
+    }
+
+    &:hover .venue-card__actions {
+        transform: translateY(0px);
+    }
+
+    &__actions {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        z-index: 11;
+        transform: translateY(-40px);
+        transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+        button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        i {
+            font-size: 1.4rem;
+        }
+    }
+
+
+    &__link {
+        transform: scale(1);
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        box-shadow: 8px 8px 10px rgb(63, 63, 63);
+        position: absolute;
+        bottom: -11px;
+        left: 0;
+        width: 95%;
+        height: 20px;
+        background: $primary;
+        padding: 1rem;
+        transform: translateX(-20px);
+        transition: transform .3s cubic-bezier(0.23, 1, 0.320, 1);
+        -webkit-clip-path: polygon(96% 0, 100% 50%, 96% 100%, 0% 100%, 0 51%, 0% 0%);
+        clip-path: polygon(96% 0, 100% 50%, 96% 100%, 0% 100%, 0 51%, 0% 0%);
+
+    }
+
+    &__image {
+        position: relative;
+    }
+
+    &__information {
+        padding: 2.5rem .4rem 1rem;
+
+        display: flex;
+        flex-direction: column;
+
+        min-height: 265px;
+    }
+
+    &__address {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .8rem;
+
+        & i {
+            font-size: 1.4rem;
+        }
+    }
+
+    &__description {
+        padding: 1rem 1rem;
+        font-size: .8rem;
+        flex: 1;
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

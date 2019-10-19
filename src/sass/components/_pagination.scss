@@ -1,0 +1,29 @@
+.pagination {
+  &__page {
+    border: none;
+    background: #fff;
+    font-size: $default-font-size;
+    border: 2px solid $vibrant;
+    transition: all 0.2s linear;
+  }
+
+  &__page:hover {
+    background: $vibrant;
+    color: #fff;
+    cursor: pointer;
+  }
+  &__page:active {
+    background: $dark;
+    color: #fff;
+  }
+  &__active {
+      background: $vibrant;
+      color: #fff;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .pagination.flex {
+    flex-direction: row;
+  }
+}

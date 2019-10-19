@@ -1,0 +1,49 @@
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+// User
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const EDIT_CURRENT_USER = 'EDIT_CURRENT_USER';
+
+// Profile
+export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILES = 'GET_PROFILES';
+export const PROFILE_LOADING = 'PROFILE_LOADING';
+export const PROFILE_NOT_FOUND = 'PROFILE_NOT_FOUND';
+export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
+
+// Lessons
+export const GET_LESSON = 'GET_LESSON';
+export const GET_LESSONS = 'GET_LESSONS';
+export const GET_ALL_INSTRUCTOR_LESSONS = 'GET_ALL_INSTRUCTOR_LESSONS';
+export const GET_ONE_INSTRUCTOR_LESSONS = 'GET_ONE_INSTRUCTOR_LESSONS';
+export const LESSON_LOADING = 'LESSONS_LOADING';
+export const ADD_LESSON = 'ADD_LESSON';
+export const CANCELLED_LESSON = 'ADD_LESSON';
+export const GET_USER_LESSONS = 'GET_USER_LESSONS';
+export const CLEAR_CURRENT_LESSON = 'CLEAR_CURRENT_EVENT';
+export const LESSON_SIGNUP = 'LESSON_SIGNUP';
+export const LESSON_APPROVAL = 'LESSON_APPROVAL';
+export const CLEAR_ALERT = 'CLEAR_ALERT';
+
+// Events
+export const GET_EVENT = 'GET_EVENT';
+export const GET_EVENTS = 'GET_EVENTS';
+export const EVENT_LOADING = 'EVENT_LOADING';
+export const ADD_EVENT = 'ADD_EVENT';
+export const CLEAR_CURRENT_EVENT = 'CLEAR_CURRENT_EVENT';
+
+// Venues
+export const GET_VENUE = 'GET_VENUE';
+export const GET_VENUES = 'GET_VENUES';
+export const GET_USER_VENUES = 'GET_USER_VENUES';
+export const VENUE_LOADING = 'VENUE_LOADING';
+export const ADD_VENUE = 'ADD_VENUE';
+export const CLEAR_CURRENT_VENUE = 'CLEAR_CURRENT_VENUE';
+
+// Filter
+export const FILTER_PROFILES = 'FILTER_PROFILES';
+export const FILTER_VENUES = 'FILTER_VENUES';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';

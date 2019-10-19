@@ -1,0 +1,18 @@
+.flash-alert {
+  & .alert,
+  & .errors {
+    font-size: 1rem;
+    color: white;
+    border-radius: 5px;
+    padding: 0.4em;
+    font-weight: 600;
+    margin: 0.5em 0;
+  }
+
+  & .alert {
+    background: $success;
+  }
+  & .errors {
+    background: $vibrant;
+  }
+}

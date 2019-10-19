@@ -1,0 +1,154 @@
+.lesson-card {
+  background: #fff;
+  box-shadow: $box-shadow;
+
+  &:hover .lesson-card__teacher {
+    flex: 90%;
+  }
+
+  &__header {
+    display: flex;
+    & > * {
+      padding: 1em 0;
+    }
+  }
+
+  & h2 {
+    margin-left: 0.5em;
+    font-weight: 300;
+  }
+
+  &__teacher {
+    flex: 0 0 50%;
+    background: linear-gradient(100deg, $primary-dark, $grey);
+    -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+    transition: flex 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    & img {
+      border-radius: 50%;
+    }
+  }
+
+  &__taught {
+    flex: 50%;
+  }
+
+  &__lessons {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+  }
+
+  &__title {
+    flex: 1;
+  }
+
+  &__venue-info {
+    padding-left: 1em;
+    flex: 1 0 50%;
+    & a {
+      color: $primary;
+      font-weight: bold;
+    }
+  }
+
+  & .message-header {
+    .lesson-card__title.title.is-5 {
+      text-decoration: none;
+    }
+    & > * {
+      margin-right: 0.5em;
+    }
+  }
+
+  & .tag {
+    min-width: 70px;
+  }
+
+  & .message-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 3em 1.5em 1em;
+
+    & span {
+      position: absolute;
+      width: 233px;
+      height: 100px;
+      top: 4px;
+      right: -1px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $primary;
+    }
+
+    & img {
+      align-self: flex-start;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(10, 10, 10, 0.6);
+    }
+
+    & .button {
+        margin: .3em auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .lesson-card {
+    & h3 {
+      display: none;
+    }
+    &__header {
+      flex-direction: column;
+    }
+    &__teacher {
+      clip-path: none;
+    }
+    &__taught.title {
+      padding: 0.7em;
+      margin: 0;
+    }
+    &__lessons {
+      padding: .4em 1em;
+    }
+    &__title {
+      text-align: center;
+      padding-bottom: 0.5em;
+      flex: 100%;
+    }
+    &__venue-info {
+      padding: 0 0.2em;
+    }
+    & .message-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    & .message-body {
+      flex-direction: column;
+      padding: 0 .5em;
+      & span {
+        position: static;
+        width: 100%;
+        text-align: center;
+        height: auto;
+        padding: 0.5em;
+        font-size: 1.2rem;
+      }
+      & img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .all-lessons {
+    & .section {
+      padding: 1em;
+    }
+  }
+}

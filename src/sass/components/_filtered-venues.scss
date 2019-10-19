@@ -1,0 +1,33 @@
+.venue-input {
+    position: relative;
+}
+
+.dropdown-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    box-shadow: 0 5px 3px #ccc;
+    background: #fff;
+    width: 100%;
+    z-index: 100;
+}
+
+.filtered-venues {
+    padding: 1rem;
+    transition: background .1s ease-out;
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $primary;
+    }
+
+    &__address {
+        font-size: .8rem;
+    }
+
+    &:hover {
+        background: rgba($secondary, .2);
+        cursor: pointer;
+    }
+}
