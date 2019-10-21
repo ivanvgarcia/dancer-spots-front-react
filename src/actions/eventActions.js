@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { dancerspotsAPI } from '../config/baseUrl';
 import {
   GET_EVENT,
   GET_EVENTS,
@@ -8,8 +8,8 @@ import {
 
 // Add an event
 export const addEvent = (eventData, history) => dispatch => {
-  axios
-    .post('/api/events', eventData)
+  dancerspotsAPI
+    .post('/events', eventData)
     .then(res => history.push(`/event/${res.data._id}`))
     .catch(err =>
       dispatch({
@@ -26,8 +26,8 @@ export const deleteEvent = id => dispatch => {
       'Are you sure you want to delete this event? This cannot be undone.'
     )
   ) {
-    axios
-      .delete(`/api/events/eventid/${id}`)
+    dancerspotsAPI
+      .delete(`/events/eventid/${id}`)
       .then(res =>
         dispatch({
           type: GET_EVENTS,
@@ -46,8 +46,8 @@ export const deleteEvent = id => dispatch => {
 // Get current event
 export const getCurrentEvent = id => dispatch => {
   dispatch(setEventLoading());
-  axios
-    .get(`/api/events/event_id/${id}`)
+  dancerspotsAPI
+    .get(`/events/event_id/${id}`)
     .then(res =>
       dispatch({
         type: GET_EVENT,
@@ -65,7 +65,7 @@ export const getCurrentEvent = id => dispatch => {
 // Get all events
 export const getAllEvents = () => async dispatch => {
   dispatch(setEventLoading());
-  const res = await axios.get('/api/events/all');
+  const res = await dancerspotsAPI.get('/events/all');
   try {
     dispatch({
       type: GET_EVENTS,

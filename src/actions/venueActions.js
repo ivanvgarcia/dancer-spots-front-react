@@ -1,4 +1,4 @@
-import axios from "axios";
+import { dancerspotsAPI } from '../config/baseUrl';
 import {
   GET_VENUE,
   GET_VENUES,
@@ -6,13 +6,13 @@ import {
   GET_ERRORS,
   FILTER_VENUES,
   GET_USER_VENUES
-} from "../actions/types";
+} from '../actions/types';
 
 // Add a venue
 export const addVenue = (venueData, history) => dispatch => {
-  axios
-    .post("/api/venues", venueData)
-    .then(res => history.push("/myprofile"))
+  dancerspotsAPI
+    .post('/venues', venueData)
+    .then(res => history.push('/myprofile'))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -25,11 +25,11 @@ export const addVenue = (venueData, history) => dispatch => {
 export const deleteVenue = id => dispatch => {
   if (
     window.confirm(
-      "Are you sure you want to delete this venue? This cannot be undone."
+      'Are you sure you want to delete this venue? This cannot be undone.'
     )
   ) {
-    axios
-      .delete(`/api/venues/venueid/${id}`)
+    dancerspotsAPI
+      .delete(`/venues/venueid/${id}`)
       .then(res =>
         dispatch({
           type: GET_VENUES,
@@ -48,8 +48,8 @@ export const deleteVenue = id => dispatch => {
 // Get current venue
 export const getCurrentVenue = id => dispatch => {
   dispatch(setVenueLoading());
-  axios
-    .get(`/api/venues/venueid/${id}`)
+  dancerspotsAPI
+    .get(`/venues/venueid/${id}`)
     .then(res =>
       dispatch({
         type: GET_VENUE,
@@ -67,8 +67,8 @@ export const getCurrentVenue = id => dispatch => {
 // Get user venues
 export const getUserVenues = user_id => dispatch => {
   dispatch(setVenueLoading());
-  axios
-    .get("/api/venues", user_id)
+  dancerspotsAPI
+    .get('/venues', user_id)
     .then(res =>
       dispatch({
         type: GET_USER_VENUES,
@@ -86,8 +86,8 @@ export const getUserVenues = user_id => dispatch => {
 // Get all venues
 export const getAllVenues = () => dispatch => {
   dispatch(setVenueLoading());
-  axios
-    .get("/api/venues/all")
+  dancerspotsAPI
+    .get('/venues/all')
     .then(res =>
       dispatch({
         type: GET_VENUES,
@@ -104,8 +104,8 @@ export const getAllVenues = () => dispatch => {
 
 // Favorite a venue
 export const favoriteVenue = id => dispatch => {
-  axios
-    .post(`/api/venues/favoritevenue/${id}`)
+  dancerspotsAPI
+    .post(`/venues/favoritevenue/${id}`)
     .then(res =>
       dispatch({
         type: GET_VENUE,
@@ -122,8 +122,8 @@ export const favoriteVenue = id => dispatch => {
 
 // Add a Review
 export const addReview = (reviewData, venue_id) => dispatch => {
-  axios
-    .post(`/api/venues/review/${venue_id}`, reviewData)
+  dancerspotsAPI
+    .post(`/venues/review/${venue_id}`, reviewData)
     .then(res =>
       dispatch({
         type: GET_VENUE,
@@ -140,8 +140,8 @@ export const addReview = (reviewData, venue_id) => dispatch => {
 
 // Delete a Review
 export const deleteReview = (venue_id, review_id) => dispatch => {
-  axios
-    .delete(`/api/venues/review/${venue_id}/${review_id}`)
+  dancerspotsAPI
+    .delete(`/venues/review/${venue_id}/${review_id}`)
     .then(res =>
       dispatch({
         type: GET_VENUE,
@@ -157,7 +157,7 @@ export const deleteReview = (venue_id, review_id) => dispatch => {
 };
 
 export const filterVenuesByName = (venues, name) => dispatch => {
-  const regex = new RegExp(`^${name}`, "gi");
+  const regex = new RegExp(`^${name}`, 'gi');
 
   const filteredVenues = venues.filter(venue =>
     venue.name.toLowerCase().match(regex)

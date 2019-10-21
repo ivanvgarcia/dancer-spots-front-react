@@ -1,12 +1,12 @@
-import axios from "axios";
+import { dancerspotsAPI } from 'axios';
 
 export const fileUpload = async selectedFile => {
   let photoId;
-  let url = "/api/uploads";
+  let url = '/uploads';
   const data = new FormData();
-  data.append("photo", selectedFile);
+  data.append('photo', selectedFile);
 
-  await axios.post(url, data).then(res => {
+  await dancerspotsAPI.post(url, data).then(res => {
     photoId = res.data.path;
   });
   return photoId;

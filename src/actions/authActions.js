@@ -6,14 +6,14 @@ import {
   RESET_PASSWORD,
   FORGOT_PASSWORD
 } from './types';
-import axios from 'axios';
+import { dancerspotsAPI } from '../config/baseUrl';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
-  axios
-    .post('/api/users/register', userData)
+  dancerspotsAPI
+    .post('/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err =>
       dispatch({
@@ -25,7 +25,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Get logged in users data
 export const getCurrentUser = () => async dispatch => {
-  const response = await axios.get('/api/users/current');
+  const response = await dancerspotsAPI.get('/users/current');
 
   dispatch({
     type: GET_CURRENT_USER,
@@ -35,7 +35,7 @@ export const getCurrentUser = () => async dispatch => {
 
 // Edit logged in user
 export const editCurrentUser = (userData, id, history) => async dispatch => {
-  const response = await axios.post(`/api/users/edit/${id}`, userData);
+  const response = await dancerspotsAPI.post(`/users/edit/${id}`, userData);
 
   try {
     dispatch({
@@ -52,8 +52,8 @@ export const editCurrentUser = (userData, id, history) => async dispatch => {
 };
 
 export const getResetPasswordToken = email => async dispatch => {
-  axios
-    .post('/api/users/forgotpassword', email)
+  dancerspotsAPI
+    .post('/users/forgotpassword', email)
     .then(response => {
       dispatch({
         type: FORGOT_PASSWORD,
@@ -69,8 +69,8 @@ export const getResetPasswordToken = email => async dispatch => {
 };
 
 export const resetPassword = (userData, history) => async dispatch => {
-  axios
-    .post('/api/users/resetpassword', userData)
+  dancerspotsAPI
+    .post('/users/resetpassword', userData)
     .then(response => {
       dispatch({
         type: RESET_PASSWORD,
@@ -89,8 +89,8 @@ export const resetPassword = (userData, history) => async dispatch => {
 
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
-  axios
-    .post('/api/users/login', userData)
+  dancerspotsAPI
+    .post('/users/login', userData)
     .then(res => {
       // Save to local storage
       const { token } = res.data;

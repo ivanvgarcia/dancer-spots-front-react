@@ -8,7 +8,7 @@ import TextEditor from '../common/TextEditor';
 import PricePicker from '../common/PricePicker';
 import PhotoUpload from '../common/PhotoUpload';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import axios from 'axios';
+import { dancerspotsAPI } from 'axios';
 
 class AddVenue extends Component {
   constructor(props) {
@@ -73,11 +73,11 @@ class AddVenue extends Component {
   }
 
   fileUpload = () => {
-    let url = '/api/uploads';
+    let url = '/uploads';
     const data = new FormData();
     data.append('photo', this.state.selectedFile);
 
-    axios.post(url, data).then(res => {
+    dancerspotsAPI.post(url, data).then(res => {
       this.setState({
         photo: res.data.path
       });
@@ -125,116 +125,116 @@ class AddVenue extends Component {
     const { country, region } = this.state;
 
     return (
-      <div className="add-venue">
-        <div className="container">
-          <div className="section columns content-is-centered">
-            <div className="column is-half">
-              <div className="margin-top-btm">
+      <div className='add-venue'>
+        <div className='container'>
+          <div className='section columns content-is-centered'>
+            <div className='column is-half'>
+              <div className='margin-top-btm'>
                 <Link
-                  to="/myprofile"
-                  className="button is-small is-primary is-outlined"
+                  to='/myprofile'
+                  className='button is-small is-primary is-outlined'
                 >
                   Go To Profile
                 </Link>
               </div>
-              <h1 className="title is-2 has-text-weight-light has-text-centered">
+              <h1 className='title is-2 has-text-weight-light has-text-centered'>
                 Add Studio or Venue
               </h1>
-              <p className="subtitle has-text-centered">
+              <p className='subtitle has-text-centered'>
                 Add a venue or studio you own or that you have visited before.
               </p>
-              <small className="tag is-primary">* = required fields</small>
-              <form onSubmit={this.onSubmit} className="margin-top-btm">
+              <small className='tag is-primary'>* = required fields</small>
+              <form onSubmit={this.onSubmit} className='margin-top-btm'>
                 <TextFieldGroup
-                  name="name"
+                  name='name'
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
-                  label="name"
-                  labelText="Name"
+                  label='name'
+                  labelText='Name'
                 />
                 <PhotoUpload
                   photo={this.state.photo}
                   drop={this.onChangeHandler}
                   imagePreview={this.state.imagePreview}
-                  label="photo"
-                  labelText="Photo of Venue"
+                  label='photo'
+                  labelText='Photo of Venue'
                 />
                 <TextFieldGroup
-                  name="address"
+                  name='address'
                   value={this.state.address}
                   onChange={this.onChange}
                   error={errors.address}
-                  label="address"
-                  labelText="Address"
+                  label='address'
+                  labelText='Address'
                 />
-                <div className="field">
-                  <div className="control">
+                <div className='field'>
+                  <div className='control'>
                     <label
-                      htmlFor="location"
-                      className="label has-text-weight-light"
+                      htmlFor='location'
+                      className='label has-text-weight-light'
                     >
                       Country
                     </label>
-                    <span className="select">
+                    <span className='select'>
                       <CountryDropdown
                         value={country}
                         onChange={val => this.selectCountry(val)}
                         whitelist={['US', 'JP']}
-                        name="country"
+                        name='country'
                       />
                     </span>
                   </div>
                 </div>
-                <div className="field">
-                  <div className="control">
+                <div className='field'>
+                  <div className='control'>
                     <label
-                      htmlFor="location"
-                      className="label has-text-weight-light"
+                      htmlFor='location'
+                      className='label has-text-weight-light'
                     >
                       Region
                     </label>
-                    <span className="select">
+                    <span className='select'>
                       <RegionDropdown
                         country={country}
                         value={region}
                         onChange={val => this.selectRegion(val)}
-                        classes="select"
+                        classes='select'
                         disableWhenEmpty={true}
-                        name="region"
+                        name='region'
                       />
                     </span>
                   </div>
                 </div>
                 <TextFieldGroup
-                  name="city"
+                  name='city'
                   value={this.state.city}
                   onChange={this.onChange}
                   error={errors.city}
-                  label="city"
-                  labelText="City"
+                  label='city'
+                  labelText='City'
                 />
                 <PricePicker
-                  name="price"
+                  name='price'
                   value={this.state.rating}
                   onStarClick={this.onStarClick}
                   error={errors.price || errors.novenuefound}
-                  label="price"
-                  labelText="Price"
-                  info="1 icon = not very expensive : 4 icons = very expensive"
+                  label='price'
+                  labelText='Price'
+                  info='1 icon = not very expensive : 4 icons = very expensive'
                 />
                 <TextEditor
                   value={this.state.description}
                   onChange={this.onEditorChange}
                   error={errors.description}
-                  label="description"
-                  labelText="Description"
-                  info="Write a short description about the venue."
+                  label='description'
+                  labelText='Description'
+                  info='Write a short description about the venue.'
                 />
                 <button
-                  type="submit"
+                  type='submit'
                   onSubmit={this.onSubmit}
-                  className="button is-primary is-outlined"
+                  className='button is-primary is-outlined'
                   disabled={disableSubmitButton}
                 >
                   Submit

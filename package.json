@@ -46,7 +46,7 @@
     "css-watch": "npm run css-build -- --watch",
     "watch:css": "npm run css-watch"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://www.dancerspots-api.com",
   "eslintConfig": {
     "extends": "react-app"
   },

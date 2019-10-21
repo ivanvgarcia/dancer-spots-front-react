@@ -12,7 +12,7 @@ import moment from 'moment';
 import ProfileEventCard from '../profile/ProfileEventCard';
 
 import MetaTags from 'react-meta-tags';
-import axios from 'axios';
+import { dancerspotsAPI } from 'axios';
 
 const AllEvents = ({
   title,
@@ -58,8 +58,8 @@ const AllEvents = ({
     window.scrollTo(0, 0);
 
     setIsLoading(true);
-    const newEvent = await axios.get(
-      `//www.dancerspots.com/api/events/all?page=${nextPage}`
+    const newEvent = await dancerspotsAPI.get(
+      `//www.dancerspots.com/events/all?page=${nextPage}`
     );
 
     setPagination({
@@ -116,13 +116,13 @@ const AllEvents = ({
         ));
       } else if (!todaysEvents.length) {
         todaysEvents = (
-          <p className="column is-full has-text-centered">
+          <p className='column is-full has-text-centered'>
             Sorry, There are no events posted for today.{' '}
             {isAuthenticated &&
             (user.isInstructor || user.isAdmin || user.isOwner) ? (
-              <Link to="/event/add-event">Add one!</Link>
+              <Link to='/event/add-event'>Add one!</Link>
             ) : (
-              <Link to="/register">Sign up to add one!</Link>
+              <Link to='/register'>Sign up to add one!</Link>
             )}
           </p>
         );
@@ -137,28 +137,28 @@ const AllEvents = ({
         <title>
           {title} | {description}
         </title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
+        <meta name='description' content={description} />
+        <meta property='og:title' content={title} />
       </MetaTags>
       <Header
         title={title}
         subtitle={description}
-        color="is-dark is-bold"
-        icon="far fa-calendar-alt"
+        color='is-dark is-bold'
+        icon='far fa-calendar-alt'
       />
 
-      <div className="section">
-        <div className="container">
-          <h2 className="title is-3 has-text-centered">Today's Events</h2>
-          <div className="columns">{renderTodaysEvents()}</div>
-          <h2 className="title is-3 has-text-centered">All Events</h2>
-          <div className="columns is-multiline margin-top-btm is-centered">
+      <div className='section'>
+        <div className='container'>
+          <h2 className='title is-3 has-text-centered'>Today's Events</h2>
+          <div className='columns'>{renderTodaysEvents()}</div>
+          <h2 className='title is-3 has-text-centered'>All Events</h2>
+          <div className='columns is-multiline margin-top-btm is-centered'>
             {renderEvents()}
           </div>
-          <div className="pagination flex">
+          <div className='pagination flex'>
             {pagination.currentPage !== 1 && pagination.previousPage !== 1 && (
               <button
-                className="pagination__page"
+                className='pagination__page'
                 onClick={() => changePage(1)}
               >
                 1
@@ -166,7 +166,7 @@ const AllEvents = ({
             )}
             {pagination.hasPreviousPage && (
               <button
-                className="pagination__page"
+                className='pagination__page'
                 onClick={() => changePage(pagination.previousPage)}
               >
                 {pagination.previousPage}
@@ -174,7 +174,7 @@ const AllEvents = ({
             )}
             {pagination.currentPage && (
               <button
-                className="pagination__page pagination__active"
+                className='pagination__page pagination__active'
                 onClick={() => changePage(pagination.currentPage)}
                 disabled={true}
               >
@@ -183,7 +183,7 @@ const AllEvents = ({
             )}
             {pagination.hasNextPage && (
               <button
-                className="pagination__page"
+                className='pagination__page'
                 onClick={() => changePage(pagination.nextPage)}
               >
                 {pagination.nextPage}
@@ -192,7 +192,7 @@ const AllEvents = ({
             {pagination.lastPage !== pagination.currentPage &&
               pagination.nextPage !== pagination.lastPage && (
                 <button
-                  className="pagination__page"
+                  className='pagination__page'
                   onClick={() => changePage(pagination.lastPage)}
                 >
                   {pagination.lastPage}

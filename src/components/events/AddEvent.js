@@ -1,33 +1,33 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { addEvent } from "../../actions/eventActions";
-import { getAllVenues, filterVenuesByName } from "../../actions/venueActions";
-import { Link, withRouter } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TimePickerField from "../common/TimePickerField";
-import moment from "moment";
-import axios from "axios";
-import PhotoUpload from "../common/PhotoUpload";
-import TextEditor from "../common/TextEditor";
-import FilteredVenues from "./FilteredVenues";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addEvent } from '../../actions/eventActions';
+import { getAllVenues, filterVenuesByName } from '../../actions/venueActions';
+import { Link, withRouter } from 'react-router-dom';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TimePickerField from '../common/TimePickerField';
+import moment from 'moment';
+import { dancerspotsAPI } from 'axios';
+import PhotoUpload from '../common/PhotoUpload';
+import TextEditor from '../common/TextEditor';
+import FilteredVenues from './FilteredVenues';
 
 class AddEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      photo: "",
-      address: "",
-      country: "",
-      region: "",
-      city: "",
-      dateofevent: "",
+      name: '',
+      photo: '',
+      address: '',
+      country: '',
+      region: '',
+      city: '',
+      dateofevent: '',
       starttime: moment(),
       endtime: moment(),
-      description: "",
-      venue: "",
-      venueFound: "",
+      description: '',
+      venue: '',
+      venueFound: '',
       selectedFile: null,
       errors: {},
       disableSubmitButton: false
@@ -80,14 +80,14 @@ class AddEvent extends Component {
       }
 
       if (matches.length > 0 && !this.state.venueFound) {
-        return <div className="dropdown-container">{matches}</div>;
+        return <div className='dropdown-container'>{matches}</div>;
       } else if (!matches.length && this.state.venue.length > 0) {
         return (
-          <div className="dropdown-container">
-            <div className="filtered-venues">
-              <Link to="/venue/add-venue">
-                <p className="filtered-venues__title">No venues found.</p>
-                <button className="button is-small is-primary">
+          <div className='dropdown-container'>
+            <div className='filtered-venues'>
+              <Link to='/venue/add-venue'>
+                <p className='filtered-venues__title'>No venues found.</p>
+                <button className='button is-small is-primary'>
                   Add Venue
                 </button>
               </Link>
@@ -114,11 +114,11 @@ class AddEvent extends Component {
   }
 
   fileUpload = () => {
-    let url = "/api/uploads";
+    let url = '/uploads';
     const data = new FormData();
-    data.append("photo", this.state.selectedFile);
+    data.append('photo', this.state.selectedFile);
 
-    axios.post(url, data).then(res => {
+    dancerspotsAPI.post(url, data).then(res => {
       this.setState({
         photo: res.data.path
       });
@@ -165,81 +165,81 @@ class AddEvent extends Component {
     // const { country, region } = this.state;
 
     return (
-      <div className="add-event">
-        <div className="container">
-          <div className="section columns content-is-centered">
-            <div className="column is-half">
-              <div className="margin-top-btm">
+      <div className='add-event'>
+        <div className='container'>
+          <div className='section columns content-is-centered'>
+            <div className='column is-half'>
+              <div className='margin-top-btm'>
                 <Link
-                  to="/myprofile"
-                  className="button is-small is-primary is-outlined"
+                  to='/myprofile'
+                  className='button is-small is-primary is-outlined'
                 >
                   Go To Profile
                 </Link>
               </div>
-              <h1 className="title is-2 has-text-weight-light has-text-centered">
+              <h1 className='title is-2 has-text-weight-light has-text-centered'>
                 Add Event
               </h1>
-              <p className="subtitle has-text-centered">
+              <p className='subtitle has-text-centered'>
                 Add any upcoming dance event
               </p>
-              <small className="tag is-primary">* = required fields</small>
-              <form onSubmit={this.onSubmit} className="margin-top-btm">
+              <small className='tag is-primary'>* = required fields</small>
+              <form onSubmit={this.onSubmit} className='margin-top-btm'>
                 <TextFieldGroup
-                  name="name"
+                  name='name'
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
-                  label="name"
-                  labelText="Name of Event"
+                  label='name'
+                  labelText='Name of Event'
                 />
                 <PhotoUpload
                   photo={this.state.photo}
                   drop={this.onChangeHandler}
                   error={errors.photo}
-                  label="photo"
-                  labelText="Photo of Event"
+                  label='photo'
+                  labelText='Photo of Event'
                 />
                 <TextFieldGroup
-                  name="dateofevent"
+                  name='dateofevent'
                   value={this.state.dateofevent}
                   onChange={this.onChange}
                   error={errors.dateofevent}
-                  label="dateofevent"
-                  labelText="Event Date"
-                  type="date"
+                  label='dateofevent'
+                  labelText='Event Date'
+                  type='date'
                 />
-                <div className="field is-grouped">
+                <div className='field is-grouped'>
                   <TimePickerField
                     value={this.state.starttime}
                     onChange={this.onStartTimeChange}
-                    name="starttime"
+                    name='starttime'
                     error={errors.starttime}
-                    label="starttime"
-                    labelText="Start time"
-                    info="At what time does the event start and end?"
-                    format="h:mm a"
+                    label='starttime'
+                    labelText='Start time'
+                    info='At what time does the event start and end?'
+                    format='h:mm a'
                   />
                   <TimePickerField
                     value={this.state.endtime}
                     onChange={this.onEndTimeChange}
-                    name="endtime"
+                    name='endtime'
                     error={errors.endtime}
-                    label="endtime"
-                    labelText="End time"
+                    label='endtime'
+                    labelText='End time'
                   />
                 </div>
-                <div className="venue-input">
+                <div className='venue-input'>
                   <TextFieldGroup
-                    name="venue"
+                    name='venue'
                     value={this.state.venue}
                     onChange={this.onSearchChange}
                     error={errors.venue || errors.novenuefound}
-                    label="venue"
-                    labelText="Venue"
-                    info="Where does the event take place?"
-                    placeholder="Search Venues"
-                    autocomplete={"false"}
+                    label='venue'
+                    labelText='Venue'
+                    info='Where does the event take place?'
+                    placeholder='Search Venues'
+                    autocomplete={'false'}
                   />
                   {this.venueList()}
                 </div>
@@ -247,14 +247,14 @@ class AddEvent extends Component {
                   value={this.state.description}
                   onChange={this.onEditorChange}
                   error={errors.description}
-                  label="description"
-                  labelText="Description"
-                  info="Write a short description about the event."
+                  label='description'
+                  labelText='Description'
+                  info='Write a short description about the event.'
                 />
                 <button
-                  type="submit"
+                  type='submit'
                   onSubmit={this.onSubmit}
-                  className="button is-primary is-outlined"
+                  className='button is-primary is-outlined'
                   disabled={disableSubmitButton}
                 >
                   Submit

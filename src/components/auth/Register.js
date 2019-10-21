@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import axios from 'axios';
+import { dancerspotsAPI } from 'axios';
 import TextFieldGroup from '../common/TextFieldGroup';
 import CheckboxFieldGroup from '../common/CheckboxFieldGroup';
 import Header from '../common/Header';
@@ -55,11 +55,11 @@ class Register extends Component {
   };
 
   fileUpload = () => {
-    let url = '/api/uploads';
+    let url = '/uploads';
     const data = new FormData();
     data.append('photo', this.state.selectedFile);
 
-    axios.post(url, data).then(res => {
+    dancerspotsAPI.post(url, data).then(res => {
       this.setState({
         photo: res.data.path
       });
@@ -100,80 +100,80 @@ class Register extends Component {
     return (
       <div>
         <Header
-          title="Sign up to Dancespot"
-          subtitle="A place for dancers to find their next dance spot at home or abroad"
-          color="is-primary is-bold"
+          title='Sign up to Dancespot'
+          subtitle='A place for dancers to find their next dance spot at home or abroad'
+          color='is-primary is-bold'
         />
 
-        <div className="columns is-mobile is-centered padding-top-btm">
-          <div className="column is-4-widescreen is-half-tablet is-11-mobile">
-            <form onSubmit={this.onSubmit} className="box">
+        <div className='columns is-mobile is-centered padding-top-btm'>
+          <div className='column is-4-widescreen is-half-tablet is-11-mobile'>
+            <form onSubmit={this.onSubmit} className='box'>
               <TextFieldGroup
-                label="name"
-                labelText="Full Name"
-                placeholder="Ivan Garcia"
-                name="name"
+                label='name'
+                labelText='Full Name'
+                placeholder='Ivan Garcia'
+                name='name'
                 value={this.state.name}
                 onChange={this.onChange}
                 error={errors.name}
               />
               <TextFieldGroup
-                label="email"
-                labelText="Email"
-                placeholder="ivangarcia@gmail.com"
-                name="email"
+                label='email'
+                labelText='Email'
+                placeholder='ivangarcia@gmail.com'
+                name='email'
                 value={this.state.email}
                 onChange={this.onChange}
                 error={errors.email}
               />
               <TextFieldGroup
-                label="password"
-                labelText="Password"
-                placeholder="Secure Password"
-                name="password"
+                label='password'
+                labelText='Password'
+                placeholder='Secure Password'
+                name='password'
                 value={this.state.password}
                 onChange={this.onChange}
                 error={errors.password}
-                type="password"
+                type='password'
               />
               <TextFieldGroup
-                label="confpassword"
-                labelText="Confirm Password"
-                placeholder="Confirm Password"
-                name="confpassword"
+                label='confpassword'
+                labelText='Confirm Password'
+                placeholder='Confirm Password'
+                name='confpassword'
                 value={this.state.confpassword}
                 onChange={this.onChange}
                 error={errors.confpassword}
-                type="password"
+                type='password'
               />
 
               <PhotoUpload
                 photo={this.state.photo}
                 drop={this.onChangeHandler}
                 error={errors.photo}
-                label="photo"
-                labelText="Photo"
+                label='photo'
+                labelText='Photo'
               />
-              <div className="field">
+              <div className='field'>
                 <p>Are you an instructor or own an establishment?</p>
               </div>
               <CheckboxFieldGroup
-                name="isinstructor"
+                name='isinstructor'
                 value={this.state.isInstructor}
                 onChange={this.onClickInstructorChange}
-                label="Instructor"
+                label='Instructor'
               />
               <CheckboxFieldGroup
-                name="isinstructor"
+                name='isinstructor'
                 value={this.state.isOwner}
                 onChange={this.onClickOwnerChange}
-                label="Owner"
+                label='Owner'
               />
-              <div className="field">
-                <div className="control">
+              <div className='field'>
+                <div className='control'>
                   <button
-                    className="button is-primary"
-                    type="submit"
+                    className='button is-primary'
+                    type='submit'
                     disabled={disableSubmitButton}
                   >
                     Sign Up

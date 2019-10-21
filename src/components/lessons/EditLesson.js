@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import { Formik, Field, Form } from 'formik';
-import axios from 'axios';
+import { dancerspotsAPI } from 'axios';
 import { withRouter } from 'react-router-dom';
 import options from '../../data/danceOptions';
 import { connect } from 'react-redux';
@@ -34,11 +34,11 @@ const EditLesson = ({
   }, [getLesson, props.match.params.id]);
 
   const fileUpload = useCallback(async () => {
-    let url = '/api/uploads';
+    let url = '/uploads';
     const data = new FormData();
     data.append('photo', selectedFile);
 
-    const res = await axios.post(url, data);
+    const res = await dancerspotsAPI.post(url, data);
     setPhoto(res.data.path);
   }, [selectedFile]);
 
@@ -48,10 +48,10 @@ const EditLesson = ({
 
   const renderError = type =>
     foundErrors[type] && (
-      <span className="icon is-small is-right">
-        <p className="help is-danger">
+      <span className='icon is-small is-right'>
+        <p className='help is-danger'>
           {' '}
-          <i className="fas fa-exclamation-triangle has-text-warning" />
+          <i className='fas fa-exclamation-triangle has-text-warning' />
           {upperCaseFirst(foundErrors[type])}
         </p>
       </span>
@@ -67,10 +67,10 @@ const EditLesson = ({
         <Fragment>
           <Header
             title={`Edit ${lesson.title}`}
-            color="is-primary is-bold has-text-centered"
+            color='is-primary is-bold has-text-centered'
           />
-          <div className="columns is-centered padding-top-btm">
-            <div className="column is-5">
+          <div className='columns is-centered padding-top-btm'>
+            <div className='column is-5'>
               <Formik
                 enableReinitialize
                 initialValues={{
@@ -105,51 +105,51 @@ const EditLesson = ({
                   isSubmitting
                   /* and other goodies */
                 }) => (
-                  <Form onSubmit={handleSubmit} className="form">
-                    <div className="field">
-                      <label htmlFor="title" className="label">
+                  <Form onSubmit={handleSubmit} className='form'>
+                    <div className='field'>
+                      <label htmlFor='title' className='label'>
                         Title
                       </label>
                       <Field
-                        type="text"
-                        name="title"
+                        type='text'
+                        name='title'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.title}
-                        className="input"
+                        className='input'
                       />
                       {renderError('title')}
                     </div>
-                    <div className="field">
-                      <label htmlFor="venue" className="label">
+                    <div className='field'>
+                      <label htmlFor='venue' className='label'>
                         Venue
                       </label>
                       <Field
-                        type="text"
-                        name="venue"
+                        type='text'
+                        name='venue'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.venue}
-                        className="input"
+                        className='input'
                       />
                       {renderError('venue')}
                     </div>
-                    <div className="field">
+                    <div className='field'>
                       <PhotoUpload
-                        name="photo"
+                        name='photo'
                         photo={photo || values.photo}
                         drop={event => {
                           setSelectedFile(event[0]);
                           fileUpload();
                         }}
                         error={errors.photo}
-                        label="photo"
-                        labelText="Photo of Event"
+                        label='photo'
+                        labelText='Photo of Event'
                       />
                       {renderError('photo')}
                     </div>
-                    <div className="field is-grouped">
-                      <div className="control">
+                    <div className='field is-grouped'>
+                      <div className='control'>
                         <SelectFieldGroup
                           onChange={e => {
                             const dance = e;
@@ -158,39 +158,39 @@ const EditLesson = ({
                           }}
                           value={values.dance}
                           error={foundErrors.dance}
-                          label="dance"
-                          labelText="What are you teaching in this lesson?"
+                          label='dance'
+                          labelText='What are you teaching in this lesson?'
                           options={options}
                           isMulti={false}
                         />
                       </div>
-                      <div className="control">
-                        <label htmlFor="price" className="label">
+                      <div className='control'>
+                        <label htmlFor='price' className='label'>
                           Price
                         </label>
                         <Field
-                          type="text"
-                          name="price"
+                          type='text'
+                          name='price'
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.price}
-                          className="input"
+                          className='input'
                         />
                         {renderError('price')}
                       </div>
                     </div>
-                    <div className="field is-grouped">
-                      <div className="control">
-                        <label htmlFor="lessondate" className="label">
+                    <div className='field is-grouped'>
+                      <div className='control'>
+                        <label htmlFor='lessondate' className='label'>
                           Lesson Date
                         </label>
                         <Field
-                          type="date"
-                          name="lessondate"
+                          type='date'
+                          name='lessondate'
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.lessondate}
-                          className="input"
+                          className='input'
                         />
                         {renderError('lessondate')}
                       </div>
@@ -201,11 +201,11 @@ const EditLesson = ({
                           handleChange(e);
                           setFieldValue('starttime', starttime);
                         }}
-                        name="starttime"
-                        label="starttime"
-                        labelText="Start time"
-                        info="At what time does the event start and end?"
-                        format="h:mm a"
+                        name='starttime'
+                        label='starttime'
+                        labelText='Start time'
+                        info='At what time does the event start and end?'
+                        format='h:mm a'
                         error={fieldErrors.starttime}
                       />
                       <TimePickerField
@@ -215,31 +215,31 @@ const EditLesson = ({
                           handleChange(e);
                           setFieldValue('endtime', endtime);
                         }}
-                        name="endtime"
-                        label="endtime"
-                        labelText="End time"
+                        name='endtime'
+                        label='endtime'
+                        labelText='End time'
                       />
                     </div>
-                    <div className="field" />
-                    <div className="field">
-                      <label htmlFor="description" className="label">
+                    <div className='field' />
+                    <div className='field'>
+                      <label htmlFor='description' className='label'>
                         Description
                       </label>
                       <Field
-                        type="textarea"
-                        name="description"
+                        type='textarea'
+                        name='description'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.description}
-                        className="textarea"
+                        className='textarea'
                       />
                       {renderError('description')}
                     </div>
 
                     <button
-                      type="submit"
+                      type='submit'
                       disabled={isSubmitting}
-                      className="button is-primary"
+                      className='button is-primary'
                     >
                       Submit
                     </button>

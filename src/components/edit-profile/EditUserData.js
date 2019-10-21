@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { editCurrentUser, getCurrentUser } from "../../actions/authActions";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { editCurrentUser, getCurrentUser } from '../../actions/authActions';
 
-import axios from "axios";
+import { dancerspotsAPI } from 'axios';
 
-import PhotoUploader from "../common/PhotoUpload";
-import TextFieldGroup from "../common/TextFieldGroup";
+import PhotoUploader from '../common/PhotoUpload';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class EditUserData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      photo: "",
+      name: '',
+      email: '',
+      photo: '',
       errors: {},
       disabledSubmitButton: false,
       selectedFile: null
@@ -52,11 +52,11 @@ class EditUserData extends Component {
   };
 
   fileUpload = () => {
-    let url = "/api/uploads";
+    let url = '/uploads';
     const data = new FormData();
-    data.append("photo", this.state.selectedFile);
+    data.append('photo', this.state.selectedFile);
 
-    axios.post(url, data).then(res => {
+    dancerspotsAPI.post(url, data).then(res => {
       this.setState({
         photo: res.data.path
       });
@@ -105,24 +105,24 @@ class EditUserData extends Component {
     const { user } = this.props.auth;
 
     return (
-      <form onSubmit={this.onSubmit} className="columns is-centered">
-        <div className="column is-6 is-7-widescreen">
-          <div className="section">
-            <h4 className="title is-5">Edit Info</h4>
+      <form onSubmit={this.onSubmit} className='columns is-centered'>
+        <div className='column is-6 is-7-widescreen'>
+          <div className='section'>
+            <h4 className='title is-5'>Edit Info</h4>
             <TextFieldGroup
-              name="name"
-              label="Full Name"
+              name='name'
+              label='Full Name'
               value={this.state.name}
               onChange={this.onChange}
-              labelText={"Full Name"}
+              labelText={'Full Name'}
               error={errors.name}
             />
             <TextFieldGroup
-              name="email"
-              label="Email"
+              name='email'
+              label='Email'
               value={this.state.email}
               onChange={this.onChange}
-              labelText={"Email"}
+              labelText={'Email'}
               error={errors.email}
             />
             <PhotoUploader
@@ -133,10 +133,10 @@ class EditUserData extends Component {
               error={errors.photo}
             />
           </div>
-          <div className="column has-text-centered">
+          <div className='column has-text-centered'>
             <button
-              className="button is-primary"
-              type="submit"
+              className='button is-primary'
+              type='submit'
               disabled={disabledSubmitButton}
             >
               Update Info

@@ -1,0 +1,10 @@
+[build]
+  publish = "build"
+  command = "yarn build"
+[context.production]
+  NODE_ENV = "production"
+  REACT_APP_CLOUDINARY_API_CLOUD_NAME="doqdc3mqz"
+  REACT_APP_CLOUDINARY_API_KEY="944868864781583"
+  REACT_APP_CLOUDINARY_API_SECRET="dllWSdEDwYkcGMTm_7FSDx39ltU"
+  REACT_APP_CLOUDINARY_API_PRESET="wsvfxy6x"
+  NODE_VERSION = "12.0.0" 

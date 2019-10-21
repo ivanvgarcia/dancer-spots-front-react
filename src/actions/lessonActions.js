@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { dancerspotsAPI } from '../config/baseUrl';
 import {
   GET_LESSON,
   GET_USER_LESSONS,
@@ -17,7 +17,7 @@ import {
 // Add lesson
 export const addLesson = (lessonData, history) => async dispatch => {
   try {
-    await axios.post('/api/lessons', lessonData);
+    await dancerspotsAPI.post('/lessons', lessonData);
     window.location = '/lessons/all';
   } catch (err) {
     dispatch({
@@ -30,7 +30,7 @@ export const addLesson = (lessonData, history) => async dispatch => {
 // Edit lesson
 export const editLesson = (lessonData, id, history) => async dispatch => {
   try {
-    await axios.patch(`/api/lessons/${id}`, lessonData);
+    await dancerspotsAPI.patch(`/lessons/${id}`, lessonData);
 
     history.replace('/lessons/all');
   } catch (err) {
@@ -48,8 +48,8 @@ export const editLesson = (lessonData, id, history) => async dispatch => {
 //       'Are you sure you want to delete this event? This cannot be undone.'
 //     )
 //   ) {
-//     axios
-//       .delete(`/api/events/eventid/${id}`)
+//     dancerspotsAPI
+//       .delete(`/events/eventid/${id}`)
 //       .then(res =>
 //         dispatch({
 //           type: GET_EVENTS,
@@ -69,7 +69,7 @@ export const editLesson = (lessonData, id, history) => async dispatch => {
 export const getLesson = id => async dispatch => {
   try {
     dispatch(setLessonLoading());
-    const res = await axios.get(`/api/lessons/${id}`);
+    const res = await dancerspotsAPI.get(`/lessons/${id}`);
     dispatch({
       type: GET_LESSON,
       payload: res.data
@@ -86,7 +86,7 @@ export const getLesson = id => async dispatch => {
 export const getAllLessonsByInstructor = () => async dispatch => {
   dispatch(setLessonLoading());
   try {
-    const res = await axios.get('/api/lessons/');
+    const res = await dancerspotsAPI.get('/lessons/');
     dispatch({
       type: GET_ALL_INSTRUCTOR_LESSONS,
       payload: res.data
@@ -102,7 +102,7 @@ export const getAllLessonsByInstructor = () => async dispatch => {
 // Get one instructors with lessons
 export const getInstructorLessons = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/lessons/instructor/${id}`);
+    const res = await dancerspotsAPI.get(`/lessons/instructor/${id}`);
     dispatch({
       type: GET_ONE_INSTRUCTOR_LESSONS,
       payload: res.data
@@ -118,7 +118,7 @@ export const getInstructorLessons = id => async dispatch => {
 // Get all lessons
 export const getUserLessons = () => async dispatch => {
   try {
-    const res = await axios.get('/api/lessons/all');
+    const res = await dancerspotsAPI.get('/lessons/all');
     dispatch({
       type: GET_USER_LESSONS,
       payload: res.data
@@ -134,7 +134,7 @@ export const getUserLessons = () => async dispatch => {
 // Lesson Approval
 export const lessonApproval = data => async dispatch => {
   try {
-    const res = await axios.post('/api/lessons/approval', data);
+    const res = await dancerspotsAPI.post('/lessons/approval', data);
     dispatch({
       type: LESSON_APPROVAL,
       payload: res.data
@@ -150,7 +150,7 @@ export const lessonApproval = data => async dispatch => {
 // Lesson sign up
 export const lessonSignUp = data => async dispatch => {
   try {
-    const res = await axios.post('/api/lessons/signup', data);
+    const res = await dancerspotsAPI.post('/lessons/signup', data);
     dispatch({
       type: LESSON_SIGNUP,
       payload: res.data
@@ -171,7 +171,7 @@ export const cancelLesson = data => async dispatch => {
     )
   ) {
     try {
-      await axios.post('/api/lessons/cancel-lesson', data);
+      await dancerspotsAPI.post('/lessons/cancel-lesson', data);
     } catch (err) {
       console.log(err);
       dispatch({
