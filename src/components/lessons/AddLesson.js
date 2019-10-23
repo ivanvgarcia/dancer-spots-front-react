@@ -12,7 +12,7 @@ import SelectFieldGroup from '../common/SelectFieldGroup';
 import PhotoUpload from '../common/PhotoUpload';
 import FilteredVenues from '../events/FilteredVenues';
 import moment from 'moment';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 const AddLesson = ({
   venue,

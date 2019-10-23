@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import { Formik, Field, Form } from 'formik';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 import { withRouter } from 'react-router-dom';
 import options from '../../data/danceOptions';
 import { connect } from 'react-redux';

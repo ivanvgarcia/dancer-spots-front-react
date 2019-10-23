@@ -12,7 +12,7 @@ import moment from 'moment';
 import ProfileEventCard from '../profile/ProfileEventCard';
 
 import MetaTags from 'react-meta-tags';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 const AllEvents = ({
   title,

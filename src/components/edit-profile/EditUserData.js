@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { editCurrentUser, getCurrentUser } from '../../actions/authActions';
 
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 import PhotoUploader from '../common/PhotoUpload';
 import TextFieldGroup from '../common/TextFieldGroup';

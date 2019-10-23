@@ -1,4 +1,4 @@
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 export const fileUpload = async selectedFile => {
   let photoId;

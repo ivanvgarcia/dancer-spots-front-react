@@ -10,7 +10,7 @@ import PricePicker from '../common/PricePicker';
 import isEmpty from '../../validation/is-empty';
 import Loader from '../common/Loader';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 class EditVenue extends Component {
   constructor(props) {

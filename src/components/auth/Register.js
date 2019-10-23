@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 import TextFieldGroup from '../common/TextFieldGroup';
 import CheckboxFieldGroup from '../common/CheckboxFieldGroup';
 import Header from '../common/Header';

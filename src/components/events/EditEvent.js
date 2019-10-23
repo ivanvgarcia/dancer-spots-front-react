@@ -10,7 +10,7 @@ import PhotoUpload from '../common/PhotoUpload';
 import moment from 'moment';
 import FilteredVenues from './FilteredVenues';
 import TextEditor from '../common/TextEditor';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 class EditEvent extends Component {
   constructor(props) {

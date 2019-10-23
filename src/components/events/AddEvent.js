@@ -7,7 +7,7 @@ import { Link, withRouter } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TimePickerField from '../common/TimePickerField';
 import moment from 'moment';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 import PhotoUpload from '../common/PhotoUpload';
 import TextEditor from '../common/TextEditor';
 import FilteredVenues from './FilteredVenues';

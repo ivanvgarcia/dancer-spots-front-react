@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import TextFieldGroup from './TextFieldGroup';
 import Header from './Header';
 import Loader from '../common/Loader';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 import { withRouter } from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
 import { connect } from 'react-redux';

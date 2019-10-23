@@ -8,7 +8,7 @@ import TextEditor from '../common/TextEditor';
 import PricePicker from '../common/PricePicker';
 import PhotoUpload from '../common/PhotoUpload';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import { dancerspotsAPI } from 'axios';
+import { dancerspotsAPI } from '../../config/baseUrl';
 
 class AddVenue extends Component {
   constructor(props) {
